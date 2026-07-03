@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login | SRMS</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+.login-card {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 30px;
+    border-radius: 15px;
+}
+</style>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container">
+    <div class="card login-card shadow">
+
+        <h3 class="text-center mb-3">🔐 Login</h3>
+
+        <!-- ERROR MESSAGE -->
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid Username or Password
+        </div>
+
+        <!-- LOGOUT MESSAGE -->
+        <div th:if="${param.logout}" class="alert alert-success">
+            Logout Successful
+        </div>
+
+        <form th:action="@{/login}" method="post">
+
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <p class="register-link">
+             New User? <a href="/register"> Create Accound </a>
+        </p>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
